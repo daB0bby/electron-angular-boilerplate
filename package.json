@@ -1,0 +1,65 @@
+{
+  "name": "electron-angular-biolerplate",
+  "version": "0.1.0",
+  "description": "### Dev Installation:     npm install",
+  "main": "./index.js",
+  "scripts": {
+    "start": "electron .",
+    "start:dev": "ENV=development electron .",
+    "clean": "rimraf dist",
+    "build": "npm run clean && webpack --progress --profile --colors --display-error-details --display-cached",
+    "build:start": "npm run build && npm run start",
+    "dev": "npm run clean && npm run dev:watch",
+    "dev:watch": "webpack --config config/webpack.dev.js --watch --progress --profile --colors --display-error-details --display-cached"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daB0bby/electron-angular-boilerplate.git"
+  },
+  "author": "daB0bby",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/daB0bby/electron-angular-boilerplate/blob/master/LICENSE"
+    }
+  ],
+  "homepage": "https://github.com/daB0bby/electron-angular-boilerplate#readme",
+  "dependencies": {
+    "@angular/common": "^2.4.2",
+    "@angular/compiler": "^2.4.2",
+    "@angular/core": "^2.4.2",
+    "@angular/forms": "^2.4.2",
+    "@angular/http": "^2.4.2",
+    "@angular/material": "^2.0.0-beta.1",
+    "@angular/platform-browser": "^2.4.2",
+    "@angular/platform-browser-dynamic": "^2.4.2",
+    "@angular/router": "^3.4.2",
+    "core-js": "^2.4.1",
+    "electron": "^1.4.13",
+    "hammerjs": "^2.0.8",
+    "material-design-icons": "^3.0.1",
+    "rxjs": "^5.0.3",
+    "zone.js": "^0.7.4"
+  },
+  "devDependencies": {
+    "@types/hammerjs": "^2.0.34",
+    "@types/node": "^6.0.58",
+    "angular2-template-loader": "^0.6.0",
+    "asar": "^0.12.4",
+    "awesome-typescript-loader": "^3.0.0-beta.17",
+    "electron-reload": "^1.1.0",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.26.0",
+    "node-sass": "^4.1.1",
+    "pug": "^2.0.0-beta6",
+    "pug-html-loader": "^1.0.10",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "tslint": "^4.3.1",
+    "typescript": "^2.1.4",
+    "webpack": "^1.14.0",
+    "webpack-merge": "^2.3.1"
+  }
+}
