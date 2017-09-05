@@ -10,13 +10,13 @@ A project boilerplate for an [Electron](http://electron.atom.io) app using
 ## Usage:
 ```
 // Install packages
-$ npm install
+$ yarn install
 
 // Development
-$ npm run start:dev   // start electron with livereload enabled
-$ npm run dev         // Builds the angular project and starts watcher
+$ yarn run start:dev   // start electron with livereload enabled
+$ yarn run dev         // Builds the angular project and starts watcher
 
 // Build
-$ npm run build       // Builds the angular project
-$ npm start           // Starts electron
+$ yarn run build       // Builds the angular project
+$ yarn start           // Starts electron
 ```

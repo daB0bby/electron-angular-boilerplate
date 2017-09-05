@@ -9,9 +9,13 @@ insert_final_newline = true
 charset = utf-8
 
 # Space indentation
-[*.{js, ts, pug, scss, json}]
+[*.{js, json}]
 indent_style = space
 indent_size = 2
+
+[*.{ts, scss, pug}]
+indent_style = space
+indent_size = 4
 
 # Dont trim whitespace in markdown
 [*.md]

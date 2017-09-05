@@ -1,17 +1,19 @@
 var webpack           = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers           = require('./helpers');
+
 
 module.exports = {
 
   entry: {
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'app': './src/main.ts'
+    polyfills: './src/polyfills.ts',
+    vendor: './src/vendor.ts',
+    app: './src/main.ts'
   },
 
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['.ts', '.js']
   },
 
   module: {
@@ -20,30 +22,51 @@ module.exports = {
       // TypeScript
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+        loaders: [
+          {
+            loader: 'awesome-typescript-loader',
+            options: {
+              configFileName: helpers.root('./', 'tsconfig.json')
+            }
+          },
+          'angular2-template-loader'
+        ]
       },
 
       // Templates
       {
         test: /\.pug$/,
-        loader: 'pug-html-loader'
+        loader: ['raw-loader', 'pug-html-loader']
       },
 
       // Assets
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'file?name=assets/[name].[ext]'
+        loader: 'file-loader?name=assets/[name].[ext]'
       },
 
       // Styles
       {
         test: /\.scss$/,
-        loaders: ["raw-loader", "sass-loader"]
-      }
+        exclude: /node_modules/,
+        loaders: ['raw-loader', 'sass-loader']
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?sourceMap' })
+      },
     ]
   },
 
   plugins: [
+    // Workaround for angular/angular#11580
+    new webpack.ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)@angular/,
+      helpers.root('src'), // location of your src
+      {} // a map of your routes
+    ),
+
     new webpack.optimize.CommonsChunkPlugin({
       name: ['app', 'vendor', 'polyfills']
     }),

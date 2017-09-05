@@ -14,7 +14,7 @@ import { routing } from './app.routes';
 @NgModule({
   imports: [
     BrowserModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     routing
   ],
   declarations: [
