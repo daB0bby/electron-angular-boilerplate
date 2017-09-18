@@ -13,8 +13,8 @@ A project boilerplate for an [Electron](http://electron.atom.io) app using
 $ yarn install
 
 // Development
-$ yarn run start:dev   // Start electron with livereload enabled
 $ yarn run dev         // Builds the angular project and starts watcher
+$ yarn run dev:start   // Starts electron with livereload enabled
 
 // Build
 $ yarn run build       // Builds the angular project
