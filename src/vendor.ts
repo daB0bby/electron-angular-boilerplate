@@ -16,7 +16,7 @@ import 'rxjs';
 import 'hammerjs';
 
 // Styles
-import './app/styles/vendor.css';
+import './styles/vendor.css';
 
 // Material Design Icons
 import '../node_modules/material-design-icons/iconfont/MaterialIcons-Regular.eot';

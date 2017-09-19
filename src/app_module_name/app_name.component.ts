@@ -3,10 +3,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  templateUrl: './app.component.pug',
-  styleUrls: ['./main.scss'],
+  templateUrl: './app_name.component.pug',
+  styleUrls: ['./app_name.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-
-
-export class AppComponent { }
+export class AppNameComponent {}
