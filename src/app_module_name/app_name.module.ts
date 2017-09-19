@@ -19,7 +19,7 @@ const APP_ROUTES: Routes = [
 @NgModule({
     imports: [
         BrowserAnimationsModule,
-        RouterModule.forRoot(APP_ROUTES),
+        RouterModule.forRoot(APP_ROUTES, { useHash: true }),
 
         DesignModule
     ],
