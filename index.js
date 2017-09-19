@@ -6,23 +6,28 @@
   const url                    = require('url');
 
   // Quit on Cmd + Q and close-button clicked
-  app.on('window-all-closed', function() {
-      app.quit();
+  app.on('window-all-closed', () => {
+    app.quit();
   });
 
   // Dev dependencies
   if (process.env.ENV === 'development') {
     // Do livereload on filechange
-    require('electron-reload')( __dirname + '/dist', {
-      electron: require('electron')
+    require('electron-reload')(path.join(__dirname, 'dist'), {
+      electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
     });
 
   }
 
-  app.on('ready', function() {
+  // Keep a global reference. Else it will be garbage collected
+  let window;
 
+  /**
+   * Creates main Window
+   */
+  function createWindow () {
     // Window otions
-    const options =  {
+    const options = {
       width: 1100,
       height: 750,
       center: true,
@@ -33,31 +38,39 @@
       show: false
     };
 
-    // Main Window
-    let mainWindow = new BrowserWindow(options);
+    // Create the browser window.
+    window = new BrowserWindow(options);
 
-    // Show window after content is loaded
-    mainWindow.once('ready-to-show', function() {
-      mainWindow.show();
-    });
-
-    mainWindow.loadURL(url.format({
+    // Load the index.html of the app.
+    window.loadURL(url.format({
       pathname: path.join(__dirname, 'dist/index.html'),
       protocol: 'file:',
       slashes: true
     }));
 
-    // Directly open dev tools in debug
+    // Directly open dev tools in development
     if (process.env.ENV === 'development')
-      mainWindow.openDevTools();
+      window.openDevTools();
 
-    mainWindow.on('closed', function() {
+    // Emitted when the window is closed.
+    window.on('closed', () => {
       // Dereference the window object, usually you would store windows
       // in an array if your app supports multi windows, this is the time
       // when you should delete the corresponding element.
-      mainWindow = null;
+      window = null;
     });
 
-  });
+    // Show window when ready
+    window.once('ready-to-show', () => {
+      window.show();
+    });
+  }
+
+  /**
+   * This method will be called when Electron has finished
+   * initialization and is ready to create browser windows.
+   * Some APIs can only be used after this event occurs.
+   */
+  app.on('ready', createWindow);
 
 })();
