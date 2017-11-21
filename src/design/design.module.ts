@@ -10,4 +10,4 @@ import { MatButtonModule } from '@angular/material';
         MatButtonModule
     ]
 })
-export class DesignModule {};
+export class DesignModule {}
