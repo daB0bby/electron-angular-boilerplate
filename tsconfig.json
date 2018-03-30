@@ -8,10 +8,12 @@
     "experimentalDecorators": true,
     "lib": ["es2015", "dom"],
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "exclude": [
-    "node_modules/*",
+    "node_modules",
     "**/*-aot.ts",
     "dist"
   ]

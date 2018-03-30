@@ -2,6 +2,6 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  templateUrl: './about.component.pug'
+  templateUrl: './about.component.html'
 })
 export class AboutComponent {}

@@ -1,11 +1,10 @@
-var webpack           = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var helpers           = require('./helpers');
+const webpack              = require('webpack');
+const HtmlWebpackPlugin    = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const helpers              = require('./helpers');
 
 
 module.exports = {
-
   entry: {
     polyfills: './src/polyfills.ts',
     vendor: './src/vendor.ts',
@@ -13,15 +12,14 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.tsx', '.js']
   },
 
   module: {
-    loaders: [
-
+    rules: [
       // TypeScript
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         loaders: [
           {
             loader: 'awesome-typescript-loader',
@@ -35,8 +33,8 @@ module.exports = {
 
       // Templates
       {
-        test: /\.pug$/,
-        loader: ['raw-loader', 'pug-html-loader']
+        test: /\.html$/,
+        loader: 'html-loader'
       },
 
       // Assets
@@ -53,7 +51,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?sourceMap' })
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
       },
     ]
   },
@@ -67,12 +68,8 @@ module.exports = {
       {} // a map of your routes
     ),
 
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor', 'polyfills']
-    }),
-
     new HtmlWebpackPlugin({
-      template: 'src/index.pug'
+      template: 'src/index.html'
     })
   ]
 };

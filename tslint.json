@@ -2,7 +2,7 @@
     "rules": {
         "no-unused-expression": true,
         "no-duplicate-variable": true,
-        "no-unused-variable": true,
+        "typedef": true,
         "curly": false,
         "class-name": true,
         "semicolon": true,
