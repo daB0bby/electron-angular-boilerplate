@@ -6,16 +6,17 @@ A project boilerplate for an [Electron](http://electron.atom.io) app using
 - [SASS](http://sass-lang.com) (CSS with superpowers)
 - [webpack](https://webpack.github.io) (Module bundler)
 
+
 ## Usage:
 ```bash
 # Install packages
 $ yarn install
 
 # Development
-$ yarn run dev         # Builds the angular project and starts watcher
-$ yarn run dev:start   # Starts electron with livereload enabled
+$ yarn dev         # Builds the angular project and starts watcher
+$ yarn dev:start   # Starts electron with livereload enabled
 
 # Build
-$ yarn run build       # Builds the angular project
-$ yarn start           # Starts electron
+$ yarn build       # Builds the angular project
+$ yarn start       # Starts electron
 ```
